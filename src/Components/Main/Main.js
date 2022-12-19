@@ -1,14 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-
+import { ShoppingCartOutlined } from '@ant-design/icons'
 import { onPlus, onMinus } from '../../core/actions/getSushiAction'
 import { addToCart } from '../../core/actions/addToCartAction'
 
 import './Main.scss'
 
 export default function Main() {
-    //const items = useSelector(state => state.items)
+
     const sushi = useSelector(({ getSushi: { sushi } }) => sushi)
 
     const dispatch = useDispatch()
@@ -21,10 +21,6 @@ export default function Main() {
     }
     const isAddToCart = (id) => {   
         dispatch(addToCart(id))
-        //postTo3000Port(id, sushiName, weight, price, counter)
-    }
-    const isOnHideMain = () => {
-        //dispatch(onHideMain)
     }
     return (
         <div className="wrap_card">
@@ -63,9 +59,7 @@ export default function Main() {
         } 
         <div className="cart">
             <Link className="link" to="/ShoppingCart/">
-                <div className="button"
-                    onClick={isOnHideMain}
-                >
+                <div className="button">
                     <h3 style={{margin: 0}}>Your cart</h3>
                 </div> 
             </Link> 

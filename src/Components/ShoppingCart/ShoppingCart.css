@@ -50,6 +50,12 @@ h3, h4 {
 	cursor: pointer;
 	color: #eb5a1e;
 }
+.total_price{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+
+}
 .text_total_price {
 	color: #eb5a1e
 }

@@ -7,7 +7,6 @@ import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import Checkout from '../Checkout/Checkout';
 
 import { getSushi } from '../../core/actions/getSushiAction'
-import {getFrom3001Port} from '../../actions';
 
 import Logo from '../Main/img/LogoRoll.png'
 
@@ -16,9 +15,6 @@ export default function App() {
     useEffect(() => {
         dispatch(getSushi())
     }, [])
-    // dispatch(getFrom3001Port())
-   
-    //const show = useSelector(state => state.show)
 
     return (
     <div>

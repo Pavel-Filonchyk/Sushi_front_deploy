@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-
+import { DeleteOutlined } from '@ant-design/icons'
 import { deleteItem, addToCounter, deductFromCounter } from '../../../core/actions/addToCartAction'
 import "./ShopList.css"
 
@@ -42,7 +42,7 @@ export default function ShopList({card}) {
             </div>
             <div className="cross"
                 onClick={() => onDelete(id)}
-            ><i className="fas fa-times"></i></div>
+            ><DeleteOutlined /></div>
         </div>
     </div>
     )

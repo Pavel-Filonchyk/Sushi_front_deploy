@@ -122,10 +122,18 @@ const HANDLERS = {
   },
 
   [actions.deleteItem]: (state, data) => {
+    const id = data
+    const index = state.sushiInCart.flat().findIndex(item => item.id === id)
+    const findItms = state.sushiInCart.flat().find(item => item.id === id);
     return {
-      ...state,
-      sushi: data
-    }
+        ...state,
+        sushiInCart: [
+            ...state.sushiInCart.splice(0, index),
+            ...state.sushiInCart.splice(index + 1)
+        ],
+        totalPrice: state.totalPrice - Number(findItms.price)
+}  
+
   },
   
 }

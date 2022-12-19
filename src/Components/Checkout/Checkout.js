@@ -1,8 +1,6 @@
 import React, {useState, useEffect, useRef, ChangeEvent} from 'react'
-import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import { Form, Input, Button, Upload } from 'antd'
-import {onShowMain} from '../../actions'
 import Axios from 'axios'
 
 import httpProvider from '../../common/constants/httpProvider';
@@ -15,25 +13,15 @@ const Checkout = () => {
       })
     }, [])
     
-  
-
-    //http://localhost:3000//payment
-
-
-    const onShowMain = () => {
-        onShowMain()
-    }
-    
     const onFinish = (e) => {
-        console.log(e)
+        //console.log(e)
     }
-    
 
     const [img, setImg] = useState(null)
 
     const handleChange = (e) => {
         if (e.target.files.length !== 0) {
-            setImg(URL.createObjectURL(e.target.files[0]))       // img - показывает фото в src
+            setImg(URL.createObjectURL(e.target.files[0]))      
         }
   
         // const formData = new FormData();
@@ -60,10 +48,8 @@ const Checkout = () => {
     return (
         <section className="checkout">
             <div className="wrap_btn_back">
-                <Link className="link" to="/Main">
-                    <div className="back_to_main"
-                        onClick={onShowMain}
-                    >
+                <Link className="link" to="/">
+                    <div className="back_to_main">
                         <h4 className="btn_to_shopping">Back to shopping</h4>
                     </div>
                 </Link>
