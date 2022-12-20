@@ -1,16 +1,8 @@
-Преобразование любых данных происходит при помощи кодировщика Unicode; в js - utf-8, который преобразоввывает в 8ми битовые (1 байт) данные
-Буфер работает с потоками данных. Данные проходят через буфер и распределяют нагрузку на систему; если большая загруженность, в буфере инфа обрабатывается постепенно или наоборот накапливается 
+to start:
 
-const buffer1 = Buffer.alloc(10) - создание пустого буфера размером 10 байт
-const buffer2 = Buffer.from("hello buffer") - создание буфера с содержимым
+first terminal:
+cd front - npm start
 
-toJSON() - показывает данные как кодовые точкисимволов Unicode
-buffer1.toJSON()  - посмотреть содержимое {type: "Buffer", data: [0,0,0,0,0,0,0,0,0,0]}
-buffer2.toJSON()  - {type: "Buffer", data: [104, 101 ....]}
+second terminal:
+cd front - cd server - npm run start
 
-bufffer1.lenght // 10
-bufffer2.lenght // 12
-
-buffer1.write("Buffer really rocks!")  -  запись в буффер
-Декодирование содержимого буфера
-buffer1.toString()  //  "Buffer rea"  так как размер буфера 10 байт

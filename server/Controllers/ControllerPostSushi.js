@@ -9,7 +9,7 @@ class ControllerPostSushi {
             const post = await Sushi.create({ 
                 SushiElems: ServicePostSushi.postElems()
             }) 
-            console.log(post.SushiElems)                           
+            //console.log(post.SushiElems)                           
             res.status(200).json(post.SushiElems)                                    
         } catch (e){
             res.status(500).json(e)                                       

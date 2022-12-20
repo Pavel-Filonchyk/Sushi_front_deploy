@@ -2,7 +2,8 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { DeleteOutlined } from '@ant-design/icons'
 import { deleteItem, addToCounter, deductFromCounter } from '../../../core/actions/addToCartAction'
-import "./ShopList.css"
+
+import style from "./ShopList.module.scss"
 
 export default function ShopList({card}) {
     const {id, url, weight, sushiName, counter, price} = card
@@ -19,28 +20,28 @@ export default function ShopList({card}) {
         dispatch(deleteItem(id))
     }
     return (
-    <div className="wrap_cart" id={id}>
-        <div className="wrapper_elems">
-            <div className="cart-item__img">
+    <div className={style.wrapCart} id={id}>
+        <div className={style.wrapperElems}>
+            <div className={style.cartItemImg}>
                 <img src={url} alt=""/>
             </div>
-            <div className="cart-item__title">{sushiName}</div>
+            <div className={style.cartItemTitle}>{sushiName}</div>
         </div>
-        <div className="wrapper_items">
-            <div className="cart-item__weight">{weight}g</div>
-            <div className="items items--small counter-wrapper">
-                <div className="items__control" 
+        <div className={style.wrapperItems}>
+            <div className={style.cartItemWeight}>{weight}g</div>
+            <div className={style.items}>
+                <div className={style.itemsControl} 
                     onClick={() => onMinus(id)}
                 >-</div>
-                <div className="items__current" >{counter}</div>
-                <div className="items__control" 
+                <div className={style.itemsCurrent}>{counter}</div>
+                <div className={style.itemsControl} style={{paddingTop: 3}}
                     onClick={() => onPlus(id)}
                 >+</div>
             </div>
-            <div className="price_cart">
-                <div className="price_currency">{price}$</div>
+            <div className={style.priceCart}>
+                <div className={style.priceCurrency}>{price}$</div>
             </div>
-            <div className="cross"
+            <div className={style.cross}
                 onClick={() => onDelete(id)}
             ><DeleteOutlined /></div>
         </div>

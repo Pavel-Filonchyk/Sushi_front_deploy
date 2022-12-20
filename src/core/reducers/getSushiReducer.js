@@ -14,7 +14,7 @@ const HANDLERS = {
     }
   },
   [actions.onPlus]: (state, data) => {
-
+    
     const id = data
     const itemIndx = state.sushi.flat().findIndex(item => item._id === id)
     const itemInState = state.sushi.flat().find(item => item._id === id)

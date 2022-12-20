@@ -9,6 +9,7 @@ const HANDLERS = {
   *[actions.getSushi]() {
     try {
       const { data } = yield call(httpProvider.get, GET_SUSHI)
+      
       yield put(actions.getSushiSuccess(data))
     } catch (error) {
       console.log(error)

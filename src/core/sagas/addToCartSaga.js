@@ -6,7 +6,7 @@ const HANDLERS = {
   *[actions.addToCart]({ payload: id }) {
   
     const getSushiState = yield select(state => state.getSushi.sushi)
-  
+    
     try {
       yield put(actions.addToCartSuccess([id, getSushiState]))
     } catch (error) {

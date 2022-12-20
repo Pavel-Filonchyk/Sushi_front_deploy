@@ -6,34 +6,36 @@ h3, h4 {
 	font-family: 'Merriweather', serif;
 }
 
-.shopping_cart {
+.shoppingCart {
 	width: 100%;
 	height: 30px;
 	z-index: 1;
 }
-.wrap_btn_back {
+.wrapBtnBack {
 	width: 100%;
 	height: 100%;
 	background-color: #F8F9F9;
 	z-index: 10;
+	.backToMain {
+		height: 30px;
+		width: 150px;
+		background-color: #f2ede7;
+		margin: 0;
+	
+	}
+	.btnToShopping {
+		margin-left: auto;
+		margin-right: auto;
+		padding-top: 5px;
+		width: 125px;
+		height: 30px;
+		cursor: pointer;
+		color: #eb5a1e;
+	}
 }
-.back_to_main {
-	height: 30px;
-	width: 150px;
-	background-color: #f2ede7;
-	margin: 0;
 
-}
-.btn_to_shopping {
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 5px;
-	width: 125px;
-	height: 30px;
-	cursor: pointer;
-	color: #eb5a1e;
-}
-.block_checkout {
+
+.blockCheckout {
 	position: fixed;
 	bottom: 0px;
 	left: 0;
@@ -41,7 +43,7 @@ h3, h4 {
 	width: 100%;
 	background-color: #f2ede7 
 }
-.btn_to_checkout {
+.btnToCheckout {
 	margin-left: auto;
 	margin-right: auto;
 	padding-top: 10px;
@@ -50,13 +52,13 @@ h3, h4 {
 	cursor: pointer;
 	color: #eb5a1e;
 }
-.total_price{
+.totalPrice{
 	width: 100%;
 	display: flex;
 	justify-content: center;
 
 }
-.text_total_price {
+.textTotalPrice {
 	color: #eb5a1e
 }
 .link {

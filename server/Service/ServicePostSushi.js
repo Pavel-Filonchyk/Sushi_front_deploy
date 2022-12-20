@@ -16,6 +16,7 @@ class ServicePostSushi {
                     "weight": item.weight,
                     "price": item.price,
                     "counter": item.counter,
+                    "type": item.type,
                     "url": http + images[index]
                 }
             })

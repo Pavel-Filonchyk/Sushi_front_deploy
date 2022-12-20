@@ -4,6 +4,7 @@ import { Form, Input, Button, Upload } from 'antd'
 import Axios from 'axios'
 
 import httpProvider from '../../common/constants/httpProvider';
+import style from './Checkout.module.scss'
 
 const Checkout = () => {
 
@@ -12,10 +13,7 @@ const Checkout = () => {
         console.log(response);
       })
     }, [])
-    
-    const onFinish = (e) => {
-        //console.log(e)
-    }
+
 
     const [img, setImg] = useState(null)
 
@@ -46,11 +44,11 @@ const Checkout = () => {
         })
     }
     return (
-        <section className="checkout">
-            <div className="wrap_btn_back">
-                <Link className="link" to="/">
-                    <div className="back_to_main">
-                        <h4 className="btn_to_shopping">Back to shopping</h4>
+        <section className={style.checkout}>
+            <div className={style.wrapBtnBack}>
+                <Link className={style.link} to="/">
+                    <div className={style.backToMain}>
+                        <h4 className={style.btnToShopping}>Back to shopping</h4>
                     </div>
                 </Link>
             </div>
@@ -62,7 +60,6 @@ const Checkout = () => {
             >Отправить</button>
 
             <img src={img} />
-            <img src="http://localhost:3001/images/8fd6cc82-5b68-4506-9895-ff2307c105d5.jpg" name="profile_pic"/>
         </section>
     )
 }
