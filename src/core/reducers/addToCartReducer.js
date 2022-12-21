@@ -132,8 +132,16 @@ const HANDLERS = {
             ...state.sushiInCart.splice(index + 1)
         ],
         totalPrice: state.totalPrice - Number(findItms.price)
-}  
+    }  
 
+  },
+  [actions.resetSushiCart]: (state, data) => {
+    
+    return {
+        ...state,
+        sushiInCart: [],
+        totalPrice: 0
+    }  
   },
   
 }
