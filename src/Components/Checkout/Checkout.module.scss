@@ -1,31 +1,86 @@
 .checkout {
-    //width: 100%;
-    //height: 500px;
+	// width: 100%;
+    // height: 100vh;
+	// display: flex;
+	// align-items: flex-end;
     //background-color:red;
     //z-index: 2;
 }
-.wrapBtnBack {
-	width: 100%;
+.modal {
+  overflow: hidden;
+  border-radius: 20px;
+}
+.mainWrap{
+	position: relative;
+	display: flex;
+	flex-direction: column;
 	height: 100%;
-	background-color: #F8F9F9;
-	z-index: 10;
-	.backToMain {
-		height: 30px;
-		width: 150px;
-		background-color: #f2ede7;
-		margin: 0;
+	width: 100%;
+	//background-color: red
+	border: 2px solid #eb5a1e;
+	border-radius: 16px;
+}
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 50px;
+	border-bottom: solid #d9d9d9 1px;
 	
+  
+	> p {
+	  margin: 0;
+	  color: #121212;
+	  font-family: 'Bitter';
+	  font-size: 24px;
+	  font-weight: 600;
+	  font-style: normal;
+	  font-style: normal;
+	  line-height: 28px;
 	}
-	.btnToShopping {
-		margin-left: auto;
-		margin-right: auto;
-		padding-top: 5px;
-		width: 125px;
-		height: 30px;
-		cursor: pointer;
-		color: #eb5a1e;
+  
+	.x {
+	  margin-right: 30px;
+	  cursor: pointer;
 	}
 }
+.wrapCart{
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: space-between; 
+	> span {
+		margin: 8px;
+		font-family: 'Bitter';
+		font-size: 18px;
+		font-weight: 600;
+	}
+}
+.price{
+	margin: 8px;
+	padding-left: 26px;
+	font-family: 'Bitter';
+	font-size: 18px;
+	font-weight: 600;
+}
+.wrapBtn{
+	position: absolute;
+	bottom: 12px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	.btn{
+		border: '2px solid #eb5a1e';
+		border-radius: 8px;
+		font-weight: 700;
+		
+		&:hover {
+		  //border: 1px solid #293BAD;
+		  color: #eb5a1e
+		}
+	}
+}
+
 .link {
 	text-decoration: none;
 }

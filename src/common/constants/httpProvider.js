@@ -1,6 +1,6 @@
-import omit from 'lodash/omit';
-import axios from 'axios';
-
+import omit from 'lodash/omit'
+import axios from 'axios'
+import qs from 'qs'
 //import { getAccessToken } from './utils';
 
 //import { showNotification } from '../components/Notification';
@@ -40,7 +40,7 @@ const HttpProvider = {
 
   request(params) {
     const { url, headers, data, ...restOptions } = params
-    
+
     let currentRequests = {};
     const getRequestKey = (url, data) => `${url},body:${JSON.stringify(data)}`
 
@@ -54,13 +54,22 @@ const HttpProvider = {
     
     let requestBody = data
     const requestKey = getRequestKey(url, data)
-
+    const uidmBaseData = {
+      client_id: 'arm-lkb_m2m',
+      client_secret: 'password',
+      realm: '/customer',
+      grant_type: 'urn:roox:params:oauth:grant-type:m2m'
+    }
+    // requestBody = qs.stringify({
+    //   ...uidmBaseData,
+    //   ...requestBody
+    // })
     // axios add
     currentRequests[requestKey] = axios({
       headers: requestHeaders,
       url: url,
       data: requestBody,
-      ...restOptions                                     // здесь метод POST, GET ...
+      ...restOptions                                     
     })
       .then((response) => response)
       .catch((error) => {

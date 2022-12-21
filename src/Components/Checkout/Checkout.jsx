@@ -1,66 +1,70 @@
 import React, {useState, useEffect, useRef, ChangeEvent} from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import {Link} from 'react-router-dom';
-import { Form, Input, Button, Upload } from 'antd'
-import Axios from 'axios'
-
-import httpProvider from '../../common/constants/httpProvider';
+import { Modal, Button } from 'antd'
+import X from './images/X.png';
 import style from './Checkout.module.scss'
 
+
 const Checkout = () => {
-
-    useEffect(() => {
-        httpProvider.get("http://localhost:3001/payment").then(response => {
-        console.log(response);
-      })
-    }, [])
-
-
-    const [img, setImg] = useState(null)
-
-    const handleChange = (e) => {
-        if (e.target.files.length !== 0) {
-            setImg(URL.createObjectURL(e.target.files[0]))      
-        }
+    const bill = useSelector(({ postBill: { bill } }) => bill)
   
-        // const formData = new FormData();
-        // formData.append('customFile', e.target.files[0])      // отправка на сервак
-        // console.log(formData)
+    const [showCheckout, setShowCheckout] = useState(true)
+
+    const images = <img src={X} style={{ width: 12, height: 12 }} alt="X" />
+
+    const onCloseCheckout = () => {
+        setShowCheckout(false)
     }
-    console.log(img)
-  
-    const submit = () => {
-        // Axios.post("http://localhost:3001/payment", {
-        //     name: 'Pavel',
-        //     position: 'fullstack developer',
-        //     img: img
-        // })
-      
-        fetch('http://localhost:3001/postPhoto', {
-            method: 'POST',
-            headers: {
-                "Contetnt-Type":"multipart/form-data" 
-            },
-            body: JSON.stringify(img)
-        })
+    const ref = React.createRef()
+    const closeModalPreview = (event) => {
+      const domNode = ref.current;
+      if (!domNode || !domNode.contains(event.target)) {
+        setShowCheckout(false)
+      }
     }
     return (
         <section className={style.checkout}>
-            <div className={style.wrapBtnBack}>
-                <Link className={style.link} to="/">
-                    <div className={style.backToMain}>
-                        <h4 className={style.btnToShopping}>Back to shopping</h4>
-                    </div>
-                </Link>
-            </div>
-            <input type="file" name="img" id="content-img"  multiple accept="image/*"
-                onChange={(e) => handleChange(e) }
-            ></input>
-            <button
-                onClick={submit}
-            >Отправить</button>
-
-            <img src={img} />
-        </section>
+            <Modal
+                open={showCheckout}
+                closable={false}
+                footer={null}
+                centered={true}
+                //onCancel={closeModalPreview}
+                className={style.modal}
+                width={400}
+                mask={true}
+                maskStyle={{ background: 'rgba(235, 90, 30, 0.3)' }}
+                bodyStyle={{ height: 315, padding: 0, borderRadius: '10px'}}
+                >
+                    <div className={style.mainWrap}>
+                        <div className={style.header}>
+                            <p style={{ paddingLeft: 32 }}>Your sushi</p>
+                            <div className={style.x} onClick={() => onCloseCheckout()}>
+                                <Link className={style.link} to="/">{images}</Link>
+                            </div>
+                        </div>  
+                        {
+                            bill?.check?.map(item => {
+                                return (
+                                    <div key={item.sushiName} className={style.wrapCart}>
+                                        <span>{item.sushiName}</span>
+                                        <span>{item.price} $</span>
+                                    </div>
+                                )
+                            })
+                        } 
+                        <span className={style.price}>Total price { bill?.totalPrice} $</span>
+                        <div className={style.wrapBtn}>
+                            <Button 
+                            className={style.btn}
+                            style={{ border: '2px solid #eb5a1e' }}
+                            >Buy sushi</Button> 
+                        </div>
+                         
+                    </div> 
+                </Modal>
+            </section>
     )
 }
 

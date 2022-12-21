@@ -10,7 +10,6 @@ import style from './Main.module.scss'
 export default function Main() {
 
     const sushi = useSelector(({ getSushi: { sushi } }) => sushi)
-    console.log(sushi)
     const dispatch = useDispatch()
 
     const isOnPlus = (id) => {
@@ -29,7 +28,7 @@ export default function Main() {
             {
                 sushi?.map((item) =>{ 
                     return (
-                    <div key={item.id} >
+                    <div key={item._id} >
                     <div className={style.card}>
                         <img className={style.productImg} src={item.url} alt=""/>
                             <h3 style={{margin: 5}}>{item.sushiName}</h3>

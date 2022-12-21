@@ -2,7 +2,6 @@ import mongoose from 'mongoose'
 import data from '../data/data.js'
 
 const result = data.data.map(item => {
-    console.log(item)
     return {
         "sushiName": String,
         "url": String,

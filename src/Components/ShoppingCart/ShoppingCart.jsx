@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { sendSushiCart } from '../../core/actions/sendSushiCartAction'
 import ShopList from './ShopList/ShopList'
 import style from './ShoppingCart.module.scss'
 
@@ -10,7 +10,13 @@ export default function ShoppingCart() {
     const sushiInCart = useSelector(({ addToCart: { sushiInCart } }) => sushiInCart)
     const totalPrice = useSelector(({ addToCart: { totalPrice } }) => totalPrice )
 
-    const cardNames = sushiInCart.flat().map(card =>{
+    const dispatch = useDispatch()
+
+    const onSushiCart = () => {
+        dispatch(sendSushiCart())
+    }
+
+    const cardNames = sushiInCart?.flat().map(card =>{
         return (<ShopList
             card={card}
             key={card.id} 
@@ -32,7 +38,9 @@ export default function ShoppingCart() {
         <div className={style.blockCheckout}>
             <Link className={style.link} to="/Checkout/">
                 <div className={style.btnToCheckout}>
-                    <h4 style={{marginBlockStart: 0}}>Proceed to checkout</h4>
+                    <h4 style={{marginBlockStart: 0}}
+                        onClick={() => onSushiCart()}
+                    >Proceed to checkout</h4>
                 </div>
             </Link>
         </div>

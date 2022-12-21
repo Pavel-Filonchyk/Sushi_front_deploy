@@ -10,7 +10,7 @@ class ServiceImg {
             })
             const images = allFiles.map((image, index) => {
                 return {
-                    "data": fs.readFileSync(`./data/img/${image}`),
+                    "data": fs.readFileSync(`./data/img/${image}`),             // read like buffer
                     "contentType": fileNames[index]
                 }
             })

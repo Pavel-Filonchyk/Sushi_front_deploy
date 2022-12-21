@@ -5,7 +5,7 @@ import * as actions from './../actions/addToCartAction'
 export const addSushi = {
   sushiInCart: [],
   totalPrice: 0,
-  sushi: []
+  sushi: [],
 }
 
 const HANDLERS = {
