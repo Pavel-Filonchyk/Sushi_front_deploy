@@ -25,7 +25,7 @@ export default function ShoppingCart() {
     return (
         <section className={style.shoppingCart}>
         <div className={style.wrapBtnBack}>
-            <Link className={style.link} to="/">
+            <Link className={style.link} to="/Main">
                 <div className={style.backToMain}>
                     <h4 className={style.btnToShopping}>Back to shopping</h4>
                 </div>

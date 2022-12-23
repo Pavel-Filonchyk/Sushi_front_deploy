@@ -1,0 +1,42 @@
+.mainWrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contentWrapper{
+    width: 100%;
+    height: calc(100vh - 280px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.wrapBtn{
+    margin-bottom: 90px;
+    .btn{
+        border: '2px solid #eb5a1e';
+        border-radius: 8px;
+        font-weight: 700;
+        width: 130px;
+        margin: 20px;
+        &:hover {
+          //border: 1px solid #293BAD;
+          color: #eb5a1e
+        }
+    }
+}
+.wrapTitle{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.wrapInput{
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.wrapButton{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

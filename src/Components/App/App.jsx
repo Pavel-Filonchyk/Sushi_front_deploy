@@ -5,10 +5,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import Main from '../Main/Main';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import Checkout from '../Checkout/Checkout';
+import Registration from '../Registration/Registration'
 import { getSushi } from '../../core/actions/getSushiAction'
-import Logo from '../Main/img/LogoRoll.png'
+import Logo from './img/LogoRoll.png'
 
-import style from '../Main/Main.module.scss'
+import style from './App.module.scss'
 
 export default function App() {
     const dispatch = useDispatch()
@@ -23,7 +24,8 @@ export default function App() {
             </header>
             
             <Routes>
-                <Route path="/" element={<Main/>}/>
+                <Route path="/" element={<Registration/>}/>
+                <Route path="/Main" element={<Main/>}/>
                 <Route path="/ShoppingCart" element={<ShoppingCart/>}/>
                 <Route path="/Checkout" element={<Checkout/>}/>
             </Routes>

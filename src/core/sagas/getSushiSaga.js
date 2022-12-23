@@ -3,7 +3,7 @@ import { all, put, takeEvery, call } from 'redux-saga/effects'
 import * as actions from '../actions/getSushiAction'
 
 import { GET_SUSHI } from '../../common/api'
-import httpProvider from '../../common/constants/httpProvider'
+import httpProvider from '../../common/httpProvider'
 
 const HANDLERS = {
   *[actions.getSushi]() {
