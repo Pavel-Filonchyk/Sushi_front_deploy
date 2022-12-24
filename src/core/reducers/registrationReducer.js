@@ -16,6 +16,7 @@ const HANDLERS = {
     }
   },
   [actions.postRegistrationSuccess]: (state, data) => {
+    console.log(data)
     if(data) {
         return {
             ...state,

@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import { Modal, Button } from 'antd'
 
 import ModalWrapper from '../../wrapers/ModalWrarrer/ModalWrapper'
+import AlertWrapper from '../../wrapers/AlertWrapper/AlertWrapper'
 import X from './images/X.png'
 import { resetSushiCart } from '../../core/actions/addToCartAction'
 
@@ -15,7 +16,7 @@ const Checkout = () => {
     const bill = useSelector(({ postBill: { bill } }) => bill)
   
     const [showCheckout, setShowCheckout] = useState(true)
-    const [alert, setAlert] = useState(false)
+    const [showAlert, setAlert] = useState(false)
     const images = <img src={X} style={{ width: 12, height: 12 }} alt="X" />
     const dispatch = useDispatch()
     
@@ -28,7 +29,7 @@ const Checkout = () => {
     const navigate = useNavigate()
     const closeAlert = () => {
         setAlert(false)
-        navigate('/Main')
+        navigate('/sushi')
         
     }
     const onCloseCheckout = () => {
@@ -48,7 +49,7 @@ const Checkout = () => {
                     <div className={style.header}>
                         <p style={{ paddingLeft: 32 }}>Your sushi</p>
                         <div className={style.x} onClick={() => onCloseCheckout()}>
-                            <Link className={style.link} to="/Main">{images}</Link>
+                            <Link className={style.link} to="/sushi">{images}</Link>
                         </div>
                     </div>  
                     {
@@ -71,18 +72,7 @@ const Checkout = () => {
                     </div>  
                 </div> 
             </ModalWrapper>
-            <Modal
-                open={alert}
-                closable={false}
-                footer={null}
-                centered={true}
-                //onCancel={closeModalPreview}
-                className={style.modal}
-                width={400}
-                mask={true}
-                maskStyle={{ background: 'rgba(235, 90, 30, 0.3)' }}
-                bodyStyle={{ height: 150, padding: 0, borderRadius: '10px'}}
-            >
+            <AlertWrapper showAlert={showAlert}>
                 <div className={style.mainWrap}>
                     <div className={style.wrapAlert}>
                         <span>Payment method not set</span>
@@ -99,7 +89,7 @@ const Checkout = () => {
                     </div>
                     
                 </div> 
-            </Modal>
+            </AlertWrapper>
             </section>
     )
 }

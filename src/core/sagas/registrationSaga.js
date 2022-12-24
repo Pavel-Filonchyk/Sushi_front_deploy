@@ -1,7 +1,7 @@
 import { all, put, takeEvery, call, select } from 'redux-saga/effects'
 
 import * as actions from '../actions/registrationAction'
-
+import { error } from '../actions/errorAction'
 import { POST_LOGIN, POST_REGISTRATION } from '../../common/api'
 import httpProvider from '../../common/httpProvider'
 
@@ -12,19 +12,19 @@ const HANDLERS = {
         data: elems
       })
       yield put(actions.postLoginSuccess(data))
-    } catch (error) {
-      console.log(error)
+    } catch (err) {
+      yield put(error(err.response.data))
     }
   },
   *[actions.postRegistration]({ payload: elems }) {
-    console.log(elems)
     try {
       const { data } = yield call(httpProvider.post, POST_REGISTRATION, {
         data: elems
       })
+      
       yield put(actions.postRegistrationSuccess(data))
-    } catch (error) {
-      console.log(error)
+    } catch (err) {
+      yield put(error(err.response.data))
     }
   }
 }

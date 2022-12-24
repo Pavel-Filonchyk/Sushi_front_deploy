@@ -57,7 +57,7 @@ export default function Main() {
             })
         } 
         <div className={style.cart}>
-            <Link className={style.link} to="/ShoppingCart/">
+            <Link className={style.link} to="/shoppingCart/">
                 <div className={style.button}>
                     <h3 style={{margin: 0}}>Your cart</h3>
                 </div> 

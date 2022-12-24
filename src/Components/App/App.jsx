@@ -25,9 +25,9 @@ export default function App() {
             
             <Routes>
                 <Route path="/" element={<Registration/>}/>
-                <Route path="/Main" element={<Main/>}/>
-                <Route path="/ShoppingCart" element={<ShoppingCart/>}/>
-                <Route path="/Checkout" element={<Checkout/>}/>
+                <Route path="/sushi" element={<Main/>}/>
+                <Route path="/shoppingCart" element={<ShoppingCart/>}/>
+                <Route path="/checkout" element={<Checkout/>}/>
             </Routes>
             
         </div> 

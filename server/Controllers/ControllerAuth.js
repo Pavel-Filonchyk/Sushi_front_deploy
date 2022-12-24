@@ -19,13 +19,13 @@ class ControllerAuth {
         try {
             const errors = validationResult(req)                                  
             if (!errors.isEmpty()) {
-                return res.status(400).json({message: 'Ошибка при регистрации', errors})
+                return res.status(400).json({message: 'Registration error', errors})
             }
 
             const {userName, password} = req.body                               
             const candidate = await User.findOne({userName})                     
             if (candidate) {
-                return res.status(400).json({message: 'Пользователь с таким именем существует'})
+                return res.status(400).json({message: 'User with this name exists'})
             }
             
             const hashPassword = bcrypt.hashSync(password, 8)                    
@@ -49,11 +49,11 @@ class ControllerAuth {
             const { userName, password } = req.body  
             const user = await User.findOne({userName})                           
             if ( !user) {
-                return res.status(400).json({message: `Пользователь ${userName} не найден`})
+                return res.status(400).json({message: `User ${userName} is not found`})
             }
             const validPassword = bcrypt.compareSync(password, user.password)     
             if ( !validPassword ) {
-                return res.status(400).json({message: 'Введён неверный пароль'})
+                return res.status(400).json({message: 'Wrong password entered'})
             }
             const token = generateAccessToken(user._id, user.roles)               
             console.log({token})

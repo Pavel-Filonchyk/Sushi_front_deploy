@@ -25,7 +25,7 @@ export default function ShoppingCart() {
     return (
         <section className={style.shoppingCart}>
         <div className={style.wrapBtnBack}>
-            <Link className={style.link} to="/Main">
+            <Link className={style.link} to="/sushi">
                 <div className={style.backToMain}>
                     <h4 className={style.btnToShopping}>Back to shopping</h4>
                 </div>
@@ -36,7 +36,7 @@ export default function ShoppingCart() {
             <h4 className={style.textTotalPrice}>Total price: {totalPrice}$</h4>
         </div>
         <div className={style.blockCheckout}>
-            <Link className={style.link} to="/Checkout/">
+            <Link className={style.link} to="/checkout/">
                 <div className={style.btnToCheckout}>
                     <h4 style={{marginBlockStart: 0}}
                         onClick={() => onSushiCart()}

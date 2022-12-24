@@ -2,8 +2,6 @@ import omit from 'lodash/omit'
 import axios from 'axios'
 import qs from 'qs'
 import { getAccessToken } from './utils'
-
-//import { showNotification } from '../components/Notification';
 //import { EMPLOYEE_INVITE_URL } from './api'  // токен
 
 const HttpProvider = {
@@ -54,17 +52,7 @@ const HttpProvider = {
     
     let requestBody = data
     const requestKey = getRequestKey(url, data)
-    const uidmBaseData = {
-      client_id: 'arm-lkb_m2m',
-      client_secret: 'password',
-      realm: '/customer',
-      grant_type: 'urn:roox:params:oauth:grant-type:m2m'
-    }
-    // requestBody = qs.stringify({
-    //   ...uidmBaseData,
-    //   ...requestBody
-    // })
-    // axios add
+  
     currentRequests[requestKey] = axios({
       headers: requestHeaders,
       url: url,
@@ -79,15 +67,6 @@ const HttpProvider = {
         if (isUnauthorized) {
           window.location.reload()
         }
-
-        // showNotification({
-        //   title: 'Ошибка запроса',
-        //   message: [
-        //     statusCode ? `Status Code: ${statusCode}` : '',
-        //     error?.response?.data?.message || error?.response?.data?.error?.message,
-        //     fullUrl
-        //   ]
-        // });
 
         return Promise.reject(error)
       })

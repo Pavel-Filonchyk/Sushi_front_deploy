@@ -5,14 +5,18 @@ import addToCart from './addToCartReducer'
 import postBill from './sendSushiCartReduser'
 import getToken from './registrationReducer'
 
+import getError from './errorReduser'
+
 export const history = createBrowserHistory()
 
 const staticReducers = {
+
   router: connectRouter(history),
   getSushi,
   addToCart,
   postBill,
-  getToken
+  getToken,
+  getError
 }
 
 export default staticReducers
