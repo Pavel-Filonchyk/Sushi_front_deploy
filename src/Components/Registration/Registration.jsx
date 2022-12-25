@@ -107,7 +107,7 @@ export default function Registration() {
                                 htmlType='submit'
                                 className={style.btn}
                                 style={{ border: '2px solid #eb5a1e' }}
-                                >ENTER
+                                ><span>ENTER</span>
                             </Button>
                         </Form.Item>
                     </div>

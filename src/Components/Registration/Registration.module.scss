@@ -39,6 +39,17 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    .btn{
+        border: '2px solid #eb5a1e';
+        border-radius: 8px;
+        font-weight: 700;
+        width: 130px;
+        margin: 20px;
+        &:hover {
+          //border: 1px solid #293BAD;
+          color: #eb5a1e
+        }
+    }
 }
 .mainWrapAlert{
 	position: relative;

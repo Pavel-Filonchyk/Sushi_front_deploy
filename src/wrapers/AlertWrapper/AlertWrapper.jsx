@@ -6,7 +6,7 @@ export default function ModalWrapper(props) {
   return (
 
     <Modal
-        open={props.showAlert || props.showAlertError}
+        open={props.showAlert || props.showAlertError || props.showOutAlert}
         closable={false}
         footer={null}
         centered={true}

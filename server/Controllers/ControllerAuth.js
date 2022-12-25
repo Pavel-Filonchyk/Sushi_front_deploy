@@ -9,7 +9,7 @@ const generateAccessToken = (id, roles) => {
     const { secret } = data
     const payload = { id, roles }                          
                             
-    return jwt.sign(payload, secret, {expiresIn: '24h'})    
+    return jwt.sign(payload, secret, {expiresIn: '1h'})    
 }
 
 class ControllerAuth {
@@ -58,9 +58,7 @@ class ControllerAuth {
             const token = generateAccessToken(user._id, user.roles) 
             
             //res.cookie("access_token", token) 
-            //res.setHeader('Set-Cookie','visited=true; Max-Age=3000; HttpOnly, Secure')  
-            res.setHeader('Set-Cookie', 'access_token=' + token)       
-            console.log({token})
+            res.setHeader('Set-Cookie', token)       
             return res.json({token})
 
         } catch (e) {

@@ -1,8 +1,8 @@
-import React, {useState, useEffect, useRef, ChangeEvent} from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import {Link} from 'react-router-dom';
-import { Modal, Button } from 'antd'
+import { Link } from 'react-router-dom';
+import { Button } from 'antd'
 
 import ModalWrapper from '../../wrapers/ModalWrarrer/ModalWrapper'
 import AlertWrapper from '../../wrapers/AlertWrapper/AlertWrapper'
@@ -17,6 +17,7 @@ const Checkout = () => {
   
     const [showCheckout, setShowCheckout] = useState(true)
     const [showAlert, setAlert] = useState(false)
+    const [showOutAlert, setOutAlert] = useState(true)
     const images = <img src={X} style={{ width: 12, height: 12 }} alt="X" />
     const dispatch = useDispatch()
     
@@ -35,6 +36,10 @@ const Checkout = () => {
     const onCloseCheckout = () => {
         setShowCheckout(false)
     }
+    const onOutAlert = () => {
+        setOutAlert(false)
+        navigate('/')
+    }
     const ref = React.createRef()
     const closeModalPreview = (event) => {
       const domNode = ref.current;
@@ -44,34 +49,56 @@ const Checkout = () => {
     }
     return (
         <section className={style.checkout}>
-           <ModalWrapper showCheckout={showCheckout}>
-                <div className={style.mainWrap}>
-                    <div className={style.header}>
-                        <p style={{ paddingLeft: 32 }}>Your sushi</p>
-                        <div className={style.x} onClick={() => onCloseCheckout()}>
-                            <Link className={style.link} to="/sushi">{images}</Link>
-                        </div>
-                    </div>  
-                    {
-                        bill?.check?.map(item => {
-                            return (
-                                <div key={item.sushiName} className={style.wrapCart}>
-                                    <span>{item.sushiName}</span>
-                                    <span>{item.price} $</span>
+            {
+                document.cookie ? 
+                    <ModalWrapper showCheckout={showCheckout}>
+                        <div className={style.mainWrap}>
+                            <div className={style.header}>
+                                <p style={{ paddingLeft: 32 }}>Your sushi</p>
+                                <div className={style.x} onClick={() => onCloseCheckout()}>
+                                    <Link className={style.link} to="/sushi">{images}</Link>
                                 </div>
-                            )
-                        })
-                    } 
-                    <span className={style.price}>Total price { bill?.totalPrice} $</span>
-                    <div className={style.wrapBtn}>
-                        <Button 
-                            className={style.btn}
-                            style={{ border: '2px solid #eb5a1e' }}
-                            onClick={() => onBuySushi()}
-                        >Buy sushi</Button> 
-                    </div>  
-                </div> 
-            </ModalWrapper>
+                            </div>  
+                            {
+                                bill?.check?.map(item => {
+                                    return (
+                                        <div key={item.sushiName} className={style.wrapCart}>
+                                            <span>{item.sushiName}</span>
+                                            <span>{item.price} $</span>
+                                        </div>
+                                    )
+                                })
+                            } 
+                            <span className={style.price}>Total price { bill?.totalPrice} $</span>
+
+                            <div className={style.wrapBtn}>
+                                <Button 
+                                    className={style.btn}
+                                    style={{ border: '2px solid #eb5a1e' }}
+                                    onClick={() => onBuySushi()}
+                                >Buy sushi</Button> 
+                            </div>  
+                        </div> 
+                    </ModalWrapper>
+                :   <AlertWrapper showOutAlert={showOutAlert}>
+                        <div className={style.mainWrap}>
+                            <div className={style.wrapAlert}>
+                                <span>You are not authorized,</span>
+                                <span>register on the site</span>
+                            </div>
+                            <div className={style.wrapBtn}>
+                                <Button
+                                    className={style.btn}
+                                    style={{ border: '2px solid #eb5a1e' }}
+                                    onClick={() => onOutAlert()}
+                                >
+                                    <span>Ok</span>
+                                </Button>
+                            </div>
+                            
+                        </div> 
+                    </AlertWrapper>
+            }
             <AlertWrapper showAlert={showAlert}>
                 <div className={style.mainWrap}>
                     <div className={style.wrapAlert}>

@@ -11,8 +11,8 @@ import roleMiddleware from './meddlewares/roleMiddleware.js'
 
 const router = new Router()
 
-router.get('/list', ControllerGetSushi.getAll)
-router.post('/cart', ControllerCartSushi.postCart)
+router.get('/list',  ControllerGetSushi.getAll)
+router.post('/cart', authMiddleware, ControllerCartSushi.postCart)
 router.post('/create', ControllerPostSushi.postAll)
 router.get('/image/:path', ControllerUrlImg.getImages)
 router.get('/posts/:id', ControllerImg.createImg)

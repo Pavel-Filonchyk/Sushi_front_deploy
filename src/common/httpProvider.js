@@ -2,7 +2,6 @@ import omit from 'lodash/omit'
 import axios from 'axios'
 import qs from 'qs'
 import { getAccessToken } from './utils'
-//import { EMPLOYEE_INVITE_URL } from './api'  // токен
 
 const HttpProvider = {
 
@@ -42,14 +41,13 @@ const HttpProvider = {
     let currentRequests = {};
     const getRequestKey = (url, data) => `${url},body:${JSON.stringify(data)}`
    
-    // авторизация
     let requestHeaders = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer sso_1.0_${getAccessToken()}`,
+      Authorization: `Bearer ${document.cookie}`,
       ...headers
     }
-    console.log(getAccessToken())
+
     let requestBody = data
     const requestKey = getRequestKey(url, data)
   
