@@ -55,7 +55,11 @@ class ControllerAuth {
             if ( !validPassword ) {
                 return res.status(400).json({message: 'Wrong password entered'})
             }
-            const token = generateAccessToken(user._id, user.roles)               
+            const token = generateAccessToken(user._id, user.roles) 
+            
+            //res.cookie("access_token", token) 
+            //res.setHeader('Set-Cookie','visited=true; Max-Age=3000; HttpOnly, Secure')  
+            res.setHeader('Set-Cookie', 'access_token=' + token)       
             console.log({token})
             return res.json({token})
 
@@ -64,7 +68,16 @@ class ControllerAuth {
             res.status(400).json({message: 'Login error'})
         }
     } 
-
+    // app.get("/login", (req, res) => {
+    //     const token = jwt.sign({ id: 7, role: "captain" }, "YOUR_SECRET_KEY");
+    //     return res
+    //       .cookie("access_token", token, {
+    //         httpOnly: true,
+    //         secure: process.env.NODE_ENV === "production",
+    //       })
+    //       .status(200)
+    //       .json({ message: "Logged in successfully 😊 👌" });
+    //   });
     async getUsers (req, res) {
 
         try {

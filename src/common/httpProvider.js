@@ -46,10 +46,10 @@ const HttpProvider = {
     let requestHeaders = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      // Authorization: `Bearer sso_1.0_${getAccessToken()}`,
+      Authorization: `Bearer sso_1.0_${getAccessToken()}`,
       ...headers
     }
-    
+    console.log(getAccessToken())
     let requestBody = data
     const requestKey = getRequestKey(url, data)
   
