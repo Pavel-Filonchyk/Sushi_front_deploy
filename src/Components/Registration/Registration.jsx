@@ -38,7 +38,6 @@ export default function Registration() {
     const onFinishLogin = (e) => {
         setShowLogin(false)
         dispatch(postLogin(e))
-        console.log(e)
         form.resetFields()
     }
     const onFinishRegistration = (e) => {

@@ -32,11 +32,11 @@ class ControllerAuth {
             
             const userRole = await Role.findOne({value: 'USER'})                 
             //const user = new User({userName, password: hashPassword, roles: [userRole.value]})   
-            
             //await user.save()
+            
             const userCreate = await User.create({userName, password: hashPassword, roles: [userRole.value]})
             const token = generateAccessToken(userCreate._id, userCreate.roles) 
-                return res.json(token)                                            
+                return res.json({token, userName: userName})                                            
         
             } catch (e) {
             console.log(e)
@@ -59,23 +59,13 @@ class ControllerAuth {
             
             //res.cookie("access_token", token) 
             res.setHeader('Set-Cookie', token)       
-            return res.json({token})
+            return res.json({token, userName: userName})
 
         } catch (e) {
             console.log(e)
             res.status(400).json({message: 'Login error'})
         }
     } 
-    // app.get("/login", (req, res) => {
-    //     const token = jwt.sign({ id: 7, role: "captain" }, "YOUR_SECRET_KEY");
-    //     return res
-    //       .cookie("access_token", token, {
-    //         httpOnly: true,
-    //         secure: process.env.NODE_ENV === "production",
-    //       })
-    //       .status(200)
-    //       .json({ message: "Logged in successfully 😊 👌" });
-    //   });
     async getUsers (req, res) {
 
         try {

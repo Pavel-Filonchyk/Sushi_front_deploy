@@ -7,7 +7,8 @@ const obj = fs.readFileSync('./postCart/postCart.json')    // затем мож�
 const Invoice = new mongoose.Schema({          
     invoice : {
         "check": Array,
-        "totalPrice": Number
+        "totalPrice": Number,
+        "userName": String
     }
 })
 

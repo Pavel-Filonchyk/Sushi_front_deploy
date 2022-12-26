@@ -10,16 +10,15 @@ const HANDLERS = {
  
     const sushiInCart = yield select(state => state.addToCart.sushiInCart)
     const totalPrice = yield select(state => state.addToCart.totalPrice)
+    const userName = yield select(state => state.getToken.userName)
     const collector = sushiInCart?.map(item => {
-
       return {
           "sushiName": item.sushiName,
           "price": item.price,
-          "id": item.id || item._id
       }
   })
 
-  const invoice = {check: collector, totalPrice}
+  const invoice = {check: collector, totalPrice, userName}
     try {
       const { data } = yield call(httpProvider.post, BUY_SUSHI, {
         data: invoice

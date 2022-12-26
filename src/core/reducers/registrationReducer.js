@@ -1,27 +1,24 @@
 /* eslint-disable import/no-anonymous-default-export */
-
 import * as actions from './../actions/registrationAction'
 
 export const getToken = {
   token: false,
+  userName: ''
 }
 
 const HANDLERS = {
   [actions.postLoginSuccess]: (state, data) => {
-    if(data) {
-        return {
-            ...state,
-            token: true
-          }
+    return {
+      ...state,
+      token: true,
+      userName: data
     }
   },
   [actions.postRegistrationSuccess]: (state, data) => {
-    console.log(data)
-    if(data) {
-        return {
-            ...state,
-            token: true
-          }
+    return {
+      ...state,
+      token: true,
+      userName: data
     }
   },
 }

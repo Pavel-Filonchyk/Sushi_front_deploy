@@ -12,7 +12,7 @@ const HANDLERS = {
         data: elems
       })
       document.cookie = data.token
-      yield put(actions.postLoginSuccess(data))
+      yield put(actions.postLoginSuccess(data.userName))
     } catch (err) {
       yield put(error(err.response.data))
     }
@@ -22,7 +22,8 @@ const HANDLERS = {
       const { data } = yield call(httpProvider.post, POST_REGISTRATION, {
         data: elems
       })
-      yield put(actions.postRegistrationSuccess(data))
+      document.cookie = data.token
+      yield put(actions.postRegistrationSuccess(data.userName))
     } catch (err) {
       yield put(error(err.response.data))
     }

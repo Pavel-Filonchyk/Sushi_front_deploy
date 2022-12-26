@@ -54,7 +54,7 @@ const Checkout = () => {
                     <ModalWrapper showCheckout={showCheckout}>
                         <div className={style.mainWrap}>
                             <div className={style.header}>
-                                <p style={{ paddingLeft: 32 }}>Your sushi</p>
+                                <p style={{ paddingLeft: 32 }}>{bill?.userName} here is your order</p>
                                 <div className={style.x} onClick={() => onCloseCheckout()}>
                                     <Link className={style.link} to="/sushi">{images}</Link>
                                 </div>
