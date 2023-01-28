@@ -2,7 +2,7 @@ import { all, put, takeEvery, call, select } from 'redux-saga/effects'
 
 import * as actions from '../actions/sendSushiCartAction'
 
-import { BUY_SUSHI } from '../../common/api'
+import { BUY_SUSHI, POST_EXPO } from '../../common/api'
 import httpProvider from '../../common/httpProvider'
 
 const HANDLERS = {
@@ -27,9 +27,22 @@ const HANDLERS = {
     } catch (error) {
       console.log(error)
     }
-  }
+  },
+
+  *[actions.sendToExpo]({ payload: message }) {
+    console.log(message)
+    const { data } = yield call(httpProvider.post, POST_EXPO, {
+      data: message
+    })
+    try {
+      yield put(actions.sendToExpoSuccess(data))
+    } catch (error) {
+      console.log(error)
+    }
+  },
   
 }
+
 
 export default function* sagaReducer() {
   const sagas = Object.keys(HANDLERS)

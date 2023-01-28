@@ -12,4 +12,7 @@ export const BUY_SUSHI = `${REACT_APP_SERVER_URL}/cart`
 export const POST_LOGIN = `${REACT_APP_SERVER_URL}/login`
 export const POST_REGISTRATION = `${REACT_APP_SERVER_URL}/registration`
 
+export const POST_EXPO = `${REACT_APP_SERVER_URL}/expo`
+
+
 export const LOGIN = `${REACT_APP_SERVER_URL}`
