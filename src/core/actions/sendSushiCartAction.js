@@ -8,6 +8,4 @@ export const { sendSushiCart, sendSushiCartSuccess, sendToExpo, sendToExpoSucces
 createActions(
   constants.SEND_SUSHI_CART,
   constants.SEND_SUSHI_CART_SUCCESS,
-  constants.SEND_TO_EXPO,
-  constants.SEND_TO_EXPO_SUCCESS
 )

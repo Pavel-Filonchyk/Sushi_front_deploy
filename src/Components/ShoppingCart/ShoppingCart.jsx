@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {Link} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { sendSushiCart, sendToExpo } from '../../core/actions/sendSushiCartAction'
+import { sendSushiCart } from '../../core/actions/sendSushiCartAction'
 import ShopList from './ShopList/ShopList'
 import style from './ShoppingCart.module.scss'
 
@@ -25,28 +25,6 @@ export default function ShoppingCart() {
         />)
     })
 
-    const sendToServer = () => {
-        // ExponentPushToken[dLrNa0D2-Ia74XA3RD3Pk2]
-        // ExponentPushToken[8PhAhBMh3pD0_b9Z1nbX8Z]
-        let message = [
-            {
-                to: 'ExponentPushToken[8PhAhBMh3pD0_b9Z1nbX8Z]',
-                sound: 'default',
-                body: 'This is a TEST notification',
-                data: { withSome: 'HOLA' },
-            },
-            {
-                to: 'ExponentPushToken[dLrNa0D2-Ia74XA3RD3Pk2]',
-                sound: 'default',
-                body: 'IBIZA RULES',
-                data: { withSome: 'HOLA' },
-            }
-        ]
-        dispatch(sendToExpo(message))
-    }
-        
-    //
-
     return (
         <section className={style.shoppingCart}>
         <div className={style.wrapBtnBack}>
@@ -59,12 +37,6 @@ export default function ShoppingCart() {
         {cardNames}
         <div className={style.totalPrice}>
             <h4 className={style.textTotalPrice}>Total price: {totalPrice}$</h4>
-        </div>
-        <div
-           onClick={() => sendToServer()}
-           style={{backgroundColor: "wheat", width: 130, cursor: "pointer"}}
-        >
-            <span>SEND TO EXPO</span>
         </div>
         <div className={style.blockCheckout}>
             <Link className={style.link} to="/checkout/">
