@@ -28,7 +28,6 @@ export default function ShopList({card}) {
             <div className={style.cartItemTitle}>{sushiName}</div>
         </div>
         <div className={style.wrapperItems}>
-            <div className={style.cartItemWeight}>{weight}g</div>
             <div className={style.items}>
                 <div className={style.itemsControl} 
                     onClick={() => onMinus(id)}

@@ -56,13 +56,11 @@ export default function Main() {
                 )
             })
         } 
-        <div className={style.cart}>
-            <Link className={style.link} to="/shoppingCart/">
-                <div className={style.button}>
-                    <h3 style={{margin: 0}}>Your cart</h3>
-                </div> 
-            </Link> 
-        </div>
+        <Link className={style.link} to="/shoppingCart/">
+            <div className={style.button}>
+                <ShoppingCartOutlined style={{fontSize: '35px'}}/>
+            </div> 
+        </Link> 
     </div>
     )
 }

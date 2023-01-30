@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import ModalWrapper from '../../wrapers/ModalWrarrer/ModalWrapper'
 import AlertWrapper from '../../wrapers/AlertWrapper/AlertWrapper'
 import { postLogin, postRegistration } from '../../core/actions/registrationAction'
-
+import X from './images/X.png'
 import style from './Registration.module.scss'
 import {GET_SUSHI} from '../../common/api'
 
@@ -21,6 +21,7 @@ export default function Registration() {
     const [showLogin, setShowLogin] = useState(false)
     const [showRegistration, setRegistration] = useState(false)
     const [showAlertError, setShowAlertError] = useState(false)
+    const images = <img src={X} style={{ width: 12, height: 12 }} alt="X" />
 
     const navigate = useNavigate()
     useEffect(() => {
@@ -46,7 +47,12 @@ export default function Registration() {
         console.log(e)
         form.resetFields()
     }
-
+    const closeLogin = () => {
+        setShowLogin(false)
+    }
+    const closeRegistration = () => {
+        setRegistration(false)
+    }
     return (
         <div className={style.mainWrapper}>
             <h1 style={{margin: 5}}>Sushi delivery</h1>
@@ -78,8 +84,14 @@ export default function Registration() {
                     }}
                 >
                     <div className={style.wrapTitle}>
-                        <h3>Login</h3>   
+                        <h3>Login</h3> 
+                        <div
+                            className={style.close}
+                            onClick={() => closeLogin()}
+                        >{images}
+                        </div>
                     </div>
+                   
                     <span>Username</span>
                     <Form.Item 
                         name='userName'
@@ -121,7 +133,12 @@ export default function Registration() {
                     }}
                 >
                     <div className={style.wrapTitle}>
-                        <h3>Registration</h3>   
+                        <h3>Registration</h3>  
+                        <div
+                            className={style.close}
+                            onClick={() => closeRegistration()}
+                        >{images}
+                        </div>
                     </div>
                     <span>Username</span>
                     <Form.Item 

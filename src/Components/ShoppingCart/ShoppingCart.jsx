@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { sendSushiCart } from '../../core/actions/sendSushiCartAction'
 import ShopList from './ShopList/ShopList'
 import style from './ShoppingCart.module.scss'
-
-//import { Expo } from 'expo-server-sdk'
+import { LeftCircleOutlined } from '@ant-design/icons'
+import { WalletOutlined } from '@ant-design/icons'
 
 export default function ShoppingCart() {
 
@@ -27,23 +27,25 @@ export default function ShoppingCart() {
 
     return (
         <section className={style.shoppingCart}>
-        <div className={style.wrapBtnBack}>
             <Link className={style.link} to="/sushi">
-                <div className={style.backToMain}>
-                    <h4 className={style.btnToShopping}>Back to shopping</h4>
+                <div className={style.button}>
+                    <LeftCircleOutlined 
+                        style={{fontSize: '35px'}}
+                    />
                 </div>
             </Link>
-        </div>
         {cardNames}
         <div className={style.totalPrice}>
             <h4 className={style.textTotalPrice}>Total price: {totalPrice}$</h4>
         </div>
         <div className={style.blockCheckout}>
             <Link className={style.link} to="/checkout/">
-                <div className={style.btnToCheckout}>
-                    <h4 style={{marginBlockStart: 0}}
-                        onClick={() => onSushiCart()}
-                    >Proceed to checkout</h4>
+                <div className={style.btnToCheckout}
+                    onClick={() => onSushiCart()}
+                >
+                    <WalletOutlined 
+                        style={{fontSize: '40px'}}
+                    />
                 </div>
             </Link>
         </div>
